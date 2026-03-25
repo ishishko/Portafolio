@@ -6,109 +6,36 @@ html {
 }
 
 :root {
-  /* Colors - Opcion 1a: Tech Futurista */
-  --bg-color: #0f172a;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --accent-color: #22d3ee;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --card-bg: rgba(30, 41, 59, 0.5);
+  /* Colors - Opcion 4b: Cyberpunk Glitch */
+  --bg-color: #000000; 
+  --text-primary: #fff;
+  --text-secondary: #ff0055; /* Neon Pink */
+  --accent-color: #ff0055; 
+  --border-color: rgba(255, 0, 85, 0.2);
+  --card-bg: rgba(10, 10, 10, 0.9);
   
   /* Typography - Fluid System */
-  --font-main: 'Inter', system-ui, sans-serif;
+  --font-main: 'JetBrains Mono', monospace;
   --font-heading: 'Space Grotesk', sans-serif;
   --font-code: 'JetBrains Mono', monospace;
   
   --fs-h1: clamp(2.5rem, 8vw, 5rem);
   --fs-h2: clamp(2rem, 5vw, 3.5rem);
-  --fs-h3: clamp(1.5rem, 3vw, 2.25rem);
-  --fs-body: clamp(1rem, 1vw + 0.75rem, 1.125rem);
-  --fs-sm: clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
-  
-  /* Bento Grid Constants */
-  --grid-gap: clamp(1rem, 2vw, 2rem);
-  --border-radius: 1rem;
+  --border-radius: 0;
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
-  background: var(--bg-color);
-  color: var(--text-primary);
-  font-family: var(--font-main);
-  font-size: var(--fs-body);
-  line-height: 1.6;
-  overflow-x: hidden;
-  padding: 0;
+  height: 100vh;
   margin: 0;
-}
-
-header,
-main,
-footer {
-  opacity: 0;
-}
-section[id] {
-  scroll-margin-top: 1rem;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-main);
+  overflow: hidden;
 }
 
 h2 {
-  color: var(--text-primary);
-  font-family: var(--font-heading);
-  font-size: var(--fs-h2);
-  line-height: 1.1;
-  font-weight: 700;
+  color: var(--accent-color);
+  text-shadow: 2px 0 #00ffcc, -2px 0 #ff0055;
   text-transform: uppercase;
-  margin: 4rem 0 2rem 0;
-  letter-spacing: -0.02em;
-}
-
-.container__flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem 10rem;
-}
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.p1 {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  text-transform: uppercase;
-}
-.p2 {
-  font-size: 1.1rem;
-  line-height: 1.4rem;
-  font-weight: 400;
-  color: var(--text-secondary);
-}
-.opacity {
-  transition: all 1s;
-  opacity: 1;
-}
-
-@media (max-width: 1680px) {
-  .container__flex {
-    padding: 3rem 5rem;
-  }
-}
-
-@media (max-width: 820px) {
-  html {
-    font-size: 12px;
-  }
-  .container__flex {
-    padding: 2rem 3rem;
-  }
-}
-
-@media (max-width: 412px) {
-  .container__flex {
-    padding: 2rem 1.25rem;
-  }
 }
