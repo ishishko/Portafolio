@@ -1,66 +1,79 @@
 ---
 ---
-<section class="section--Skill" id="skill">
-  <div class="skillhobbies--container flex">
-    <h2 class="skillhobies--h2">Skills</h2>
-    <div class="skillhobbies--div--container">
-      <ul class="skillhobbies--ul">
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div skill--div__1"></div>
-          <p class="skillhobbies--p">HTML 5</p>
+<div class="skills-wrapper" id="skill">
+  <div class="skill-group">
+    <h2 class="section-title">Skills</h2>
+      <ul class="skills-list">
+        <li class="skill-item">
+          <div class="skill-icon skill-icon__1"></div>
+          <p>HTML 5</p>
         </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div skill--div__2"></div>
-          <p class="skillhobbies--p">CSS</p>
+        <li class="skill-item">
+          <div class="skill-icon skill-icon__2"></div>
+          <p>CSS</p>
         </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div skill--div__3"></div>
-          <p class="skillhobbies--p">JAVASCRIPT</p>
+        <li class="skill-item">
+          <div class="skill-icon skill-icon__3"></div>
+          <p>JAVASCRIPT</p>
         </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div skill--div__4"></div>
-          <p class="skillhobbies--p">S Q L</p>
+        <li class="skill-item">
+          <div class="skill-icon skill-icon__4"></div>
+          <p>S Q L</p>
         </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div skill--div__5"></div>
-          <p class="skillhobbies--p">PHP</p>
+        <li class="skill-item">
+          <div class="skill-icon skill-icon__5"></div>
+          <p>PHP</p>
         </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div skill--div__6"></div>
-          <p class="skillhobbies--p">PYTHON</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="skillhobbies--container flex">
-    <h2 class="skillhobies--h2">Hobbies</h2>
-    <div class="skillhobbies--div--container">
-      <ul class="skillhobbies--ul">
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div hobbies--div__1"></div>
-          <p class="skillhobbies--p">MUSICA</p>
-        </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div hobbies--div__2"></div>
-          <p class="skillhobbies--p">DEPORTES</p>
-        </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div hobbies--div__3"></div>
-          <p class="skillhobbies--p">GAMING</p>
-        </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div hobbies--div__4"></div>
-          <p class="skillhobbies--p">AUTOMOVILISMO</p>
-        </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div hobbies--div__5"></div>
-          <p class="skillhobbies--p">TECNOLOGIA</p>
-        </li>
-        <li class="skillhobbies--li flex">
-          <div class="skillhobbies--div hobbies--div__6"></div>
-          <p class="skillhobbies--p">ELECTRONICA</p>
+        <li class="skill-item">
+          <div class="skill-icon skill-icon__6"></div>
+          <p>PYTHON</p>
         </li>
       </ul>
-    </div>
   </div>
-</section>
+</div>
+
+<style>
+  .skills-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .section-title {
+    margin-top: 0;
+    font-size: var(--fs-h3);
+  }
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1.5rem;
+    padding: 0;
+    list-style: none;
+  }
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .skill-icon {
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 8px var(--accent-color));
+  }
+  /* Re-linking the existing images */
+  .skill-icon__1 { background-image: url("/assets/img/html.png"); }
+  .skill-icon__2 { background-image: url("/assets/img/css.png"); }
+  .skill-icon__3 { background-image: url("/assets/img/js.png"); }
+  .skill-icon__4 { background-image: url("/assets/img/sql.png"); }
+  .skill-icon__5 { background-image: url("/assets/img/php.png"); }
+  .skill-icon__6 { background-image: url("/assets/img/python.png"); }
+
+  p {
+    font-size: var(--fs-sm);
+    font-weight: 500;
+  }
+</style>

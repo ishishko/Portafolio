@@ -6,7 +6,7 @@ html {
 }
 
 :root {
-  /* Colors - Defaults (to be overridden by branches) */
+  /* Colors - Opcion 1a: Tech Futurista */
   --bg-color: #0f172a;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;

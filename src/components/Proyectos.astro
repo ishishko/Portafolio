@@ -1,75 +1,84 @@
 ---
 ---
-<section class="section--proyectos" id="proyectos">
-  <div class="proyectos--container container__flex">
-    <h2>Proyectos</h2>
-    <div class="proyectos--container--div">
-      <div class="proyecto--div">
-        <div class="proyecto--div--interior2">
-          <div class="proyecto--interior">
-            <p class="proyecto--p p1">Juego Ahorcado usando HTML, CSS y Javascrit</p>
-            <p class="proyecto--p p2">Challenge ALURA-ONE</p>
-          </div>
-          <div class="proyecto--interior">
-            <a
-              href="https://github.com/ishishko/Challenge-ONE-Ahorcado"
-              target="_blank"
-              class="proyecto--a proyecto--a__repo proyecto--web--ahorcado"
-              >Repositorio</a
-            >
-            <a
-              href="https://ishishko.github.io/Challenge-ONE-Ahorcado/"
-              target="_blank"
-              class="proyecto--a proyecto--a__web proyecto--git--ahorcado"
-              >Proyec. Web</a
-            >
-          </div>
-        </div>
-        <div class="proyecto--container--img">
-          <div>
-            <img src="/assets/img/ahorcado2.jpg" alt="ahorcado" class="proyecto--img proyecto--img__none" />
-          </div>
-          <div>
-            <img src="/assets/img/ahorcado.jpg" alt="ahorcado" class="proyecto--img" />
-          </div>
+<div class="proyectos-wrapper" id="proyectos">
+  <h2 class="section-title">Proyectos destacados</h2>
+  <div class="proyectos-grid">
+    <div class="proyecto-card">
+      <div class="proyecto-info">
+        <p class="p-main">Juego Ahorcado</p>
+        <p class="p-sub">HTML, CSS, JS - Challenge ALURA</p>
+        <div class="proyecto-links">
+          <a href="https://github.com/ishishko/Challenge-ONE-Ahorcado" target="_blank">Repo</a>
+          <a href="https://ishishko.github.io/Challenge-ONE-Ahorcado/" target="_blank">Web</a>
         </div>
       </div>
-      <div class="proyecto--div rever">
-        <div class="proyecto--container--img">
-          <div>
-            <img src="/assets/img/encriptador1.jpg" alt="encriptador" class="proyecto--img" />
-          </div>
-          <div>
-            <img
-              src="/assets/img/encriptador2.jpg"
-              alt="encriptador"
-              class="proyecto--img proyecto--img__none"
-            />
-          </div>
-        </div>
-        <div class="proyecto--div--interior1">
-          <div class="proyecto--interior">
-            <p class="proyecto--p p1">Encriptador usando HTML, CSS y JavaScript</p>
-            <p class="proyecto--p p2">Challenge ALURA-ONE</p>
-          </div>
-          <div class="proyecto--interior">
-            <div class="proyecto--interior">
-              <a
-                href="https://github.com/ishishko/Challenge-ONE-Encriptador"
-                target="_blank"
-                class="proyecto--a proyecto--a__repo proyecto--web--ahorcado"
-                >Repositorio</a
-              >
-              <a
-                href="https://ishishko.github.io/Challenge-ONE-Encriptador/"
-                target="_blank"
-                class="proyecto--a proyecto--a__web proyecto--git--ahorcado"
-                >Proyec. Web</a
-              >
-            </div>
-          </div>
+      <img src="/assets/img/ahorcado.jpg" alt="ahorcado" class="proyecto-preview" />
+    </div>
+
+    <div class="proyecto-card">
+      <img src="/assets/img/encriptador1.jpg" alt="encriptador" class="proyecto-preview" />
+      <div class="proyecto-info">
+        <p class="p-main">Encriptador Decodificador</p>
+        <p class="p-sub">JS Avanzado - Challenge ALURA</p>
+        <div class="proyecto-links">
+          <a href="https://github.com/ishishko/Challenge-ONE-Encriptador" target="_blank">Repo</a>
+          <a href="https://ishishko.github.io/Challenge-ONE-Encriptador/" target="_blank">Web</a>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<style>
+  .proyectos-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .section-title {
+    font-size: var(--fs-h3);
+    margin: 0;
+  }
+  .proyectos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .proyecto-card {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 1rem;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+  }
+  .proyecto-preview {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  .p-main { font-weight: 700; font-size: 1rem; margin: 0; color: var(--text-primary); }
+  .p-sub { font-size: 0.8rem; color: var(--text-secondary); margin: 0 0 1rem 0; }
+  
+  .proyecto-links {
+    display: flex;
+    gap: 1rem;
+  }
+  .proyecto-links a {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 2rem;
+    transition: all 0.2s ease;
+  }
+  .proyecto-links a:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+  }
+</style>
