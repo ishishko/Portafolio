@@ -8,16 +8,28 @@ import Experiencia from '../components/Experiencia.astro';
 import Proyectos from '../components/Proyectos.astro';
 import Contacto from '../components/Contacto.astro';
 import Footer from '../components/Footer.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoItem from '../components/BentoItem.astro';
 ---
 
 <BaseLayout title="Portafolio Ignacio Shishko">
 	<Header />
 	<main>
 		<SobreMi />
-		<Skills />
-		<Formacion />
-		<Experiencia />
-		<Proyectos />
+		<BentoGrid>
+			<BentoItem colSpan={8} rowSpan={4}>
+				<Skills />
+			</BentoItem>
+			<BentoItem colSpan={4} rowSpan={4}>
+				<Formacion />
+			</BentoItem>
+			<BentoItem colSpan={4} rowSpan={4}>
+				<Experiencia />
+			</BentoItem>
+			<BentoItem colSpan={8} rowSpan={4}>
+				<Proyectos />
+			</BentoItem>
+		</BentoGrid>
 		<Contacto />
 	</main>
 	<Footer />

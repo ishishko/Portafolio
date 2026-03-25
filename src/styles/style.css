@@ -1,24 +1,43 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
 }
 
 :root {
-  --bg-color: #ffffff;
-  --text-primary: #000000;
-  --text-secondary: #555555;
-  --accent-color: #e60000;
-  --border-color: #000000;
-  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Colors - Defaults (to be overridden by branches) */
+  --bg-color: #0f172a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent-color: #22d3ee;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(30, 41, 59, 0.5);
+  
+  /* Typography - Fluid System */
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  
+  --fs-h1: clamp(2.5rem, 8vw, 5rem);
+  --fs-h2: clamp(2rem, 5vw, 3.5rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2.25rem);
+  --fs-body: clamp(1rem, 1vw + 0.75rem, 1.125rem);
+  --fs-sm: clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
+  
+  /* Bento Grid Constants */
+  --grid-gap: clamp(1rem, 2vw, 2rem);
+  --border-radius: 1rem;
 }
 
 body {
   width: 100%;
+  min-height: 100vh;
   background: var(--bg-color);
   color: var(--text-primary);
   font-family: var(--font-main);
+  font-size: var(--fs-body);
+  line-height: 1.6;
   overflow-x: hidden;
   padding: 0;
   margin: 0;
@@ -35,13 +54,13 @@ section[id] {
 
 h2 {
   color: var(--text-primary);
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: 900;
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  font-weight: 700;
   text-transform: uppercase;
-  border-left: 15px solid var(--accent-color);
-  padding-left: 1.5rem;
   margin: 4rem 0 2rem 0;
+  letter-spacing: -0.02em;
 }
 
 .container__flex {
