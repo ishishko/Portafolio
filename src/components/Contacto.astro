@@ -1,0 +1,75 @@
+---
+---
+<section class="section--contacto">
+  <div class="contacto--container container__flex">
+    <div class="contacto--img">
+      <img src="/assets/img/mail.jpg" alt="contacto" style="max-height: 550px;" />
+    </div>
+    <div class="contacto--datos">
+      <h2>Contacto</h2>
+      <p>¿Queres Contactarme?</p>
+      <p>Completa el formulario para enviarme un mensaje.</p>
+      <div class="contacto--div--formulario">
+        <form class="contacto--formulario" id="form" action="https://formspree.io/f/maykagoz" method="POST">
+          <div class="contacto--div--input">
+            <input class="input--nombre" type="text" name="nombre" required />
+            <label class="lbl--nombre">
+              <span class="text--nombre">Nombre</span>
+            </label>
+          </div>
+          <div class="contacto--div--input">
+            <input class="input--email" type="email" name="email" required />
+            <label class="lbl--email">
+              <span class="text--email">Email</span>
+            </label>
+          </div>
+          <div class="contacto--div--input">
+            <input class="input--asunto" type="text" name="asunto" required />
+            <label class="lbl--asunto">
+              <span class="text--asunto">Asunto</span>
+            </label>
+          </div>
+          <textarea
+            class="contacto--textarea"
+            name="mensaje"
+            id=""
+            cols="30"
+            rows="5"
+            placeholder="Mensaje"
+            required
+          ></textarea>
+          <button class="contacto--button" type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const $form = document.querySelector(".contacto--formulario") as HTMLFormElement;
+  $form?.addEventListener("submit", enviar);
+
+  async function enviar(this: HTMLFormElement, e: SubmitEvent) {
+    e.preventDefault();
+    const form = new FormData(this);
+    const response = await fetch(this.action, {
+      method: this.method,
+      body: form,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    if (response.ok) {
+      const btnEnviar = document.querySelector(".contacto--button");
+      this.reset();
+      if (btnEnviar) {
+        btnEnviar.innerHTML = "Mensaje Enviado";
+        btnEnviar.classList.add("contacto--button__ok");
+        setTimeout(() => {
+          btnEnviar.classList.remove("contacto--button__ok");
+          btnEnviar.innerHTML = "Enviar";
+        }, 2500);
+      }
+    }
+  }
+</script>

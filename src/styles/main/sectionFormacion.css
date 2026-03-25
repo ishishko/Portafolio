@@ -43,17 +43,17 @@
 }
 
 .elizalde {
-  background-image: url(../../img/AgustinElizalde.png);
+  background-image: url(/assets/img/AgustinElizalde.png);
   width: 86px;
   height: 111px;
 }
 .unlam {
-  background-image: url(../../img/unlam.jpg);
+  background-image: url(/assets/img/unlam.jpg);
   width: 118px;
   height: 102px;
 }
 .one {
-  background-image: url(../../img/one.jpg);
+  background-image: url(/assets/img/one.jpg);
   width: 117px;
   height: 67px;
 }

@@ -1,0 +1,72 @@
+---
+import '../styles/reset.css';
+import '../styles/normalize.css';
+import '../styles/style.css';
+import '../styles/spinner.css';
+import '../styles/header/header.css';
+import '../styles/main/sectionSobreMi.css';
+import '../styles/main/sectionSkills.css';
+import '../styles/main/sectionFormacion.css';
+import '../styles/main/sectionExperiencia.css';
+import '../styles/main/sectionProyectos.css';
+import '../styles/main/sectionContacto.css';
+import '../styles/footer/footer.css';
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Portafolio de Ignacio Shishko" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/assets/img/programacion.png" />
+		<meta name="generator" content={Astro.generator} />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Open+Sans:wght@300;400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="sk-circle">
+			<div class="sk-circle1 sk-child"></div>
+			<div class="sk-circle2 sk-child"></div>
+			<div class="sk-circle3 sk-child"></div>
+			<div class="sk-circle4 sk-child"></div>
+			<div class="sk-circle5 sk-child"></div>
+			<div class="sk-circle6 sk-child"></div>
+			<div class="sk-circle7 sk-child"></div>
+			<div class="sk-circle8 sk-child"></div>
+			<div class="sk-circle9 sk-child"></div>
+			<div class="sk-circle10 sk-child"></div>
+			<div class="sk-circle11 sk-child"></div>
+			<div class="sk-circle12 sk-child"></div>
+		</div>
+		<slot />
+		<script>
+			window.addEventListener('load', () => {
+				const spinner = document.querySelector(".sk-circle");
+				const header = document.querySelector("header");
+				const main = document.querySelector("main");
+				const footer = document.querySelector("footer");
+
+				setTimeout(() => {
+					header?.classList.add("opacity");
+					main?.classList.add("opacity");
+					footer?.classList.add("opacity");
+					spinner?.remove();
+				}, 1000);
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	/* Any global style overrides if needed */
+	.opacity {
+		opacity: 1 !important;
+		transition: opacity 1s ease-in-out;
+	}
+</style>

@@ -1,0 +1,40 @@
+---
+---
+<header>
+  <div class="header--container container__flex">
+    <div class="header--container--div">
+      <div class="flex">
+        <div class="header--div--imagen"></div>
+        <p class="header--p">Ignacio Shishko</p>
+      </div>
+      <nav class="header--nav flex header--nav__fixed412">
+        <ul class="header--ul flex header--ul__fixed412">
+          <li class="header--li"><a class="header--a p2" href="#sobremi">Sobre mi</a></li>
+          <li class="header--li"><a class="header--a p2" href="#skill">Skills</a></li>
+          <li class="header--li"><a class="header--a p2" href="#formacion">Formacion</a></li>
+          <li class="header--li"><a class="header--a p2" href="#experiencia">Experiencia</a></li>
+          <li class="header--li"><a class="header--a p2" href="#proyectos">Proyectos</a></li>
+          <li class="header--li"><a class="header--a p2" href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const nav = document.querySelector("nav");
+  const ul = document.querySelector(".header--ul");
+
+  function scroll() {
+    const html = document.querySelector("html")?.clientWidth || 0;
+    if (html <= 412) {
+      nav?.classList.remove("header--nav__fixed");
+      ul?.classList.remove("header--ul__fixed");
+    } else {
+      nav?.classList.toggle("header--nav__fixed", window.scrollY > 100);
+      ul?.classList.toggle("header--ul__fixed", window.scrollY > 100);
+    }
+  }
+
+  window.addEventListener("scroll", scroll);
+</script>

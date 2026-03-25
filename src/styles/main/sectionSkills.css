@@ -39,46 +39,46 @@
 }
 
 .skill--div__1 {
-  background-image: url(../../img/html5.jpg);
+  background-image: url(/assets/img/html5.jpg);
 }
 .skill--div__2 {
-  background-image: url(../../img/css.jpg);
+  background-image: url(/assets/img/css.jpg);
 }
 .skill--div__3 {
-  background-image: url(../../img/javascript.jpg);
+  background-image: url(/assets/img/javascript.jpg);
   width: 110px;
   height: 110px;
   border-radius: 10px;
 }
 .skill--div__4 {
-  background-image: url(../../img/sql.jpg);
+  background-image: url(/assets/img/sql.jpg);
 }
 .skill--div__5 {
-  background-image: url(../../img/php.jpg);
+  background-image: url(/assets/img/php.jpg);
   width: 107px;
   height: 110px;
 }
 .skill--div__6 {
-  background-image: url(../../img/python.jpg);
+  background-image: url(/assets/img/python.jpg);
 }
 
 .hobbies--div__1 {
-  background-image: url(../../img/musica.png);
+  background-image: url(/assets/img/musica.png);
 }
 .hobbies--div__2 {
-  background-image: url(../../img/deportes.png);
+  background-image: url(/assets/img/deportes.png);
 }
 .hobbies--div__3 {
-  background-image: url(../../img/gaming.png);
+  background-image: url(/assets/img/gaming.png);
 }
 .hobbies--div__4 {
-  background-image: url(../../img/automovilismo.png);
+  background-image: url(/assets/img/automovilismo.png);
 }
 .hobbies--div__5 {
-  background-image: url(../../img/tecnologia.png);
+  background-image: url(/assets/img/tecnologia.png);
 }
 .hobbies--div__6 {
-  background-image: url(../../img/electronica.png);
+  background-image: url(/assets/img/electronica.png);
 }
 
 @media (max-width: 1680px) {
