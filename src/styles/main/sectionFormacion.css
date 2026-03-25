@@ -1,9 +1,10 @@
 .formacion--container {
   flex-direction: column;
-  background: #7882b9;
+  background: #fff;
   width: calc(100% - 20rem);
-  /* padding: 2rem 10rem 2rem 10rem; */
-  box-shadow: -10px 10px 10px #7882b9, 10px 10px 10px #7882b9, -10px -10px 10px #7882b9, 10px -10px 10px #7882b9;
+  border: 4px solid var(--border-color);
+  padding: 3rem;
+  border-radius: 0;
 }
 
 .formacion--academica {
@@ -15,11 +16,17 @@
 
 .academica {
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: #fff;
   width: 350px;
   height: 100px;
   padding: 1rem;
-  border-radius: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+.academica:hover {
+  background-color: #f0f0f0;
+  border-color: var(--accent-color);
 }
 .academia--div {
   background-repeat: no-repeat;

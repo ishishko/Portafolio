@@ -5,11 +5,23 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --bg-color: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #555555;
+  --accent-color: #e60000;
+  --border-color: #000000;
+  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 body {
   width: 100%;
-  background: #bbbccc;
-  font-family: Montserrat;
+  background: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-main);
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 header,
@@ -22,10 +34,14 @@ section[id] {
 }
 
 h2 {
-  color: #353535;
-  font-size: 2.25rem;
-  line-height: 2.75rem;
-  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-left: 15px solid var(--accent-color);
+  padding-left: 1.5rem;
+  margin: 4rem 0 2rem 0;
 }
 
 .container__flex {
@@ -41,15 +57,16 @@ h2 {
 }
 .p1 {
   font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 700;
-  color: #353535;
+  line-height: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
 }
 .p2 {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  font-weight: 500;
-  color: #353535;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  font-weight: 400;
+  color: var(--text-secondary);
 }
 .opacity {
   transition: all 1s;

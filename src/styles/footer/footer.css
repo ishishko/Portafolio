@@ -1,8 +1,10 @@
 .footer--container {
   height: 5rem;
   width: 100%;
-  background-color: #7882b9;
+  background-color: #fff;
+  border-top: 5px solid var(--border-color);
   justify-content: space-around;
+  border-radius: 0;
 }
 .footer--logos {
   justify-content: space-around;

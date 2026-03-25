@@ -18,8 +18,17 @@
 }
 .sobremi--li {
   text-decoration: none;
-  color: #353535;
-  font-weight: 500;
+  color: var(--text-primary);
+  font-weight: 800;
+  border: 3px solid var(--border-color);
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+.sobremi--li:hover {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
 }
 
 .sobremi--imagen {
@@ -29,15 +38,16 @@
   width: 368px;
   min-width: 350px;
   height: 368px;
-  border-radius: 49%;
-  box-shadow: 5px 15px 15px #353535;
+  border-radius: 0;
+  border: 10px solid var(--border-color);
+  box-shadow: 15px 15px 0 var(--accent-color);
 }
 
 .sobremi--2 {
-  background: #7882b9;
+  background: var(--bg-color);
   width: calc(100vw - 35rem);
-  padding: 2rem 25rem 3rem 10rem;
-  box-shadow: -10px 10px 10px #7882b9, 10px 10px 10px #7882b9, -10px -10px 10px #7882b9, 10px -10px 10px #7882b9;
+  padding: 3rem 25rem 4rem 10rem;
+  border: 5px solid var(--border-color);
 }
 
 .sobremi--2--h2 {
