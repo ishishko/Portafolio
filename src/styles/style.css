@@ -21,6 +21,9 @@ html {
   
   --fs-h1: clamp(2.5rem, 8vw, 5rem);
   --fs-h2: clamp(2rem, 5vw, 3.5rem);
+  --fs-h3: clamp(1.25rem, 3vw, 1.75rem);
+  --fs-body: clamp(1rem, 2vw, 1.125rem);
+  --fs-sm: clamp(0.75rem, 1.5vw, 0.875rem);
   --border-radius: 0;
 }
 

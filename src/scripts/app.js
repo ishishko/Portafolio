@@ -12,12 +12,11 @@ function eventos() {
 }
 
 const $form = document.querySelector(".contacto--formulario");
-$form.addEventListener("submit", enviar);
+$form?.addEventListener("submit", enviar);
 
 async function enviar(e) {
   e.preventDefault();
   const form = new FormData(this);
-  console.log(form);
   const response = await fetch(this.action, {
     method: this.method,
     body: form,

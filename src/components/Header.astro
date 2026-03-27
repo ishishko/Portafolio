@@ -1,82 +1,40 @@
 ---
 ---
 <header class="main-header">
-  <div class="header-content container__flex">
-    <div class="logo-section">
-      <div class="flex">
-        <div class="logo-icon"></div>
-        <p class="brand-name">Ignacio Shishko</p>
-      </div>
-      <nav class="nav-section">
-        <ul class="nav-list flex">
-          <li class="nav-item"><a class="nav-link" href="#sobremi">Sobre mi</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skill">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#formacion">Formación</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
-          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
+  <div class="header-content">
+    <div class="logo-icon"></div>
+    <p class="brand-name">Ignacio Shishko</p>
   </div>
 </header>
 
 <style>
   .main-header {
     width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 0.75rem 2rem;
     background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
+  }
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    background-image: url("/assets/img/programacion.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 4px var(--accent-color));
   }
   .brand-name {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--text-primary);
-  }
-  .nav-list {
-    list-style: none;
-    padding: 0;
-    gap: 1.5rem;
-  }
-  .nav-link {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-size: var(--fs-sm);
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-  .nav-link:hover {
-    color: var(--accent-color);
-  }
-  .logo-icon {
-    width: 32px;
-    height: 32px;
-    background-image: url("/assets/img/programacion.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right: 0.75rem;
-  }
-  
-  /* Scroll shadow logic handled by script */
-  .header-scrolled {
-    box-shadow: 0 4px 20px -5px rgba(0,0,0,0.3);
-    border-bottom: 1px solid var(--border-color);
-    backdrop-filter: blur(10px);
-  }
-
-  @media (max-width: 820px) {
-    .nav-list {
-      display: none; /* Simplification for now, or use a mobile menu later */
-    }
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
   }
 </style>
-
-<script>
-  const header = document.querySelector(".main-header");
-  
-  window.addEventListener("scroll", () => {
-    header?.classList.toggle("header-scrolled", window.scrollY > 50);
-  });
-</script>
