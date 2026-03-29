@@ -18,15 +18,15 @@ import Footer from '../components/Footer.astro';
 				<div class="slice-header"><h2>ABOUT</h2></div>
 				<div class="slice-content"><SobreMi /></div>
 			</section>
+
+			<section class="slice projects-slice">
+				<div class="slice-header"><h2>WORK</h2></div>
+				<div class="slice-content"><Proyectos /></div>
+			</section>
 			
 			<section class="slice skills-slice">
 				<div class="slice-header"><h2>TECH</h2></div>
 				<div class="slice-content"><Skills /></div>
-			</section>
-			
-			<section class="slice projects-slice">
-				<div class="slice-header"><h2>WORK</h2></div>
-				<div class="slice-content"><Proyectos /></div>
 			</section>
 			
 			<section class="slice experience-slice">
@@ -50,18 +50,28 @@ import Footer from '../components/Footer.astro';
 		background: #000;
 		overflow: hidden;
 		font-family: 'JetBrains Mono', monospace;
-		position: relative; /* Contexto para el header flotante */
+		position: relative;
+		display: flex; /* Para centrado horizontal */
+		justify-content: center;
+		align-items: center;
 	}
 	.accordion-container {
 		display: flex;
-		width: 100%;
-		height: 100%; /* Ocupa todo el VH */
-		position: absolute;
-		top: 0;
-		left: 0;
+		width: 71.5vw; /* 5 slices * 14.3% del viewport */
+		height: 100vh;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+		transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 	}
+	/* Regla que escala el bloque entero al 100% khi there is internal hover */
+	.accordion-container:has(.slice:hover) {
+		width: 100vw !important;
+	}
+
 	.slice {
-		flex: 1;
+		flex: 0 0 14.3vw; /* Ancho inicial exacto */
+		width: 14.3vw;
 		height: 100%;
 		border-left: 1px solid rgba(255, 0, 85, 0.3);
 		transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -70,8 +80,19 @@ import Footer from '../components/Footer.astro';
 		background: #000;
 		cursor: crosshair;
 	}
+	
+	/* Cuando el contenedor está en hover, las cajas no seleccionadas pasan a 12.5vw */
+	.accordion-container:hover .slice {
+		flex: 0 0 12.5vw;
+		width: 12.5vw;
+	}
+
+	.slice:last-child { border-right: 1px solid rgba(255, 0, 85, 0.3); }
+
+	/* La caja bajo el cursor mantiene el 50vw exacto */
 	.slice:hover {
-		flex: 5;
+		flex: 0 0 50vw !important;
+		width: 50vw !important;
 		background: #050505;
 	}
 	.slice-header {
