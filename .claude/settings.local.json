@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(css|scss|less\\)$\")",
+      "Bash(git checkout:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

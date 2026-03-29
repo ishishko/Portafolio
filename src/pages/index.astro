@@ -46,16 +46,19 @@ import Footer from '../components/Footer.astro';
 <style>
 	.glitch-accordion {
 		height: 100vh;
-		display: flex;
-		flex-direction: column;
+		width: 100%;
 		background: #000;
 		overflow: hidden;
 		font-family: 'JetBrains Mono', monospace;
+		position: relative; /* Contexto para el header flotante */
 	}
 	.accordion-container {
 		display: flex;
-		flex-grow: 1;
 		width: 100%;
+		height: 100%; /* Ocupa todo el VH */
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 	.slice {
 		flex: 1;
@@ -90,7 +93,7 @@ import Footer from '../components/Footer.astro';
 	}
 
 	.slice-content {
-		padding: 4rem;
+		padding: 6rem 4rem 4rem 4rem; /* Padding superior para evitar el header (aprox 80-100px) */
 		height: 100%;
 		overflow-y: auto;
 		opacity: 0;
