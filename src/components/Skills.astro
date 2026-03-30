@@ -326,14 +326,32 @@
     background: rgba(255, 0, 85, 0.05);
   }
 
-  /* --- CERTIFICACIONES (Tabla Real de HUD) --- */
+  /* --- CERTIFICACIONES (Tabla Real de HUD con Scroll Interno) --- */
   .cert-table-container {
     width: 100%;
+    max-height: 40vh; /* Ajustado al 40% del Viewport para mayor dinamismo */
+    overflow-y: auto;
     overflow-x: auto;
     background: rgba(10, 10, 10, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     padding: 0.25rem;
+    
+    /* Scrollbar Minimalista HUD */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+  }
+
+  .cert-table-container::-webkit-scrollbar {
+    width: 4px;
+  }
+  .cert-table-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .cert-table-container::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--accent-color);
   }
 
   .cert-table {
@@ -343,6 +361,10 @@
   }
 
   .cert-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #000; /* Aseguramos que el fondo no sea transparente al scrollear */
     text-align: left;
     padding: 0.5rem 1.5rem;
     font-family: var(--font-heading);
