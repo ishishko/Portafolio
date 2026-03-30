@@ -267,10 +267,11 @@
 
   .section-title {
     font-family: "JetBrains Mono", monospace;
-    font-size: 1.5rem;
+    font-size: var(--fs-h3);
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: -0.04em;
+    margin-bottom: 2.5rem;
   }
 
   /* --- HABILIDADES TÉCNICAS (Grid Moderna) --- */
@@ -394,24 +395,34 @@
     width: 100px;
   }
 
-  .cert-inst {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
-    width: 200px;
-  }
-
-  .cert-name {
-    font-size: 1rem;
+  .terminal-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: center;
+    width: 100%;
     font-weight: 500;
-    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 60px; /* Espacio para los círculos */
+    padding-right: 1rem;
   }
 
   @media (max-width: 512px) {
+    .terminal-title {
+      font-size: 0.65rem;
+      padding-left: 45px;
+    }
+    .circles { left: 0.5rem; gap: 0.3rem }
+    .circles span { width: 8px; height: 8px; }
     .skills-grid { gap: 1.5rem; }
     .cat-title { font-size: 0.95rem; }
     .skill-pill { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
-    .cert-year, .cert-inst { font-size: 0.75rem; width: auto; }
+    .cert-year { font-size: 0.75rem; width: 60px; }
+    .cert-inst { display: none; } /* Ocultar institución en móviles angostos */
     .cert-name { font-size: 0.85rem; }
+    .cert-table th:nth-child(2), .cert-table td:nth-child(2) { display: none; }
     .cert-table th { font-size: 0.75rem; padding: 0.4rem 1rem; }
     .cert-table td { padding: 0.3rem 1rem; }
   }
