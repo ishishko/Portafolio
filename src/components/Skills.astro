@@ -1,7 +1,7 @@
 ---
 ---
 <div class="tech-wrapper" id="skill">
-  <div class="tech-container">
+  <div class="tech-container mobile-inner-scroll">
     
     <!-- BLOQUE 1: HABILIDADES TÉCNICAS -->
     <div class="skills-section">
@@ -408,5 +408,19 @@
 
   .highlight-text {
     color: var(--accent-color);
+  }
+  @media (max-width: 900px) {
+    .mobile-inner-scroll {
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-color) transparent;
+    }
+    .mobile-inner-scroll::-webkit-scrollbar { width: 4px; }
+    .mobile-inner-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
+    }
   }
 </style>

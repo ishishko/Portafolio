@@ -1,7 +1,7 @@
 ---
 ---
 <section class="hero-section" id="sobremi">
-  <div class="hero-container">
+  <div class="hero-container mobile-inner-scroll">
     
     <!-- Fila 1: Nombre (Izquierda) y Foto (Derecha) -->
     <div class="hero-header-row">
@@ -220,9 +220,20 @@
     line-height: 1.5;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     .hero-header-row { flex-direction: column; align-items: flex-start; }
     .hero-visual { flex-basis: 150px; }
     .brief-text { grid-template-columns: 1fr; gap: 1.5rem; }
+    
+    .mobile-inner-scroll {
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    .mobile-inner-scroll::-webkit-scrollbar { width: 4px; }
+    .mobile-inner-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
+    }
   }
 </style>
