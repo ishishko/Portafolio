@@ -41,6 +41,37 @@ import Contacto from '../components/Contacto.astro';
 	<div class="noise-overlay"></div>
 </BaseLayout>
 
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const slices = document.querySelectorAll('.slice');
+		const btnVolver = document.getElementById('btn-volver');
+		
+		slices.forEach(slice => {
+			slice.addEventListener('click', (e) => {
+				// Actuar solo si estamos en un tamaño de pantalla de celular
+				if (window.innerWidth <= 900) {
+					// Si el panel ya está abierto, no hacemos nada extra para que dejen usar los lins de adentro
+					if (slice.classList.contains('active')) return;
+
+					// Limpiar otras instancias colgadas
+					slices.forEach(s => s.classList.remove('active'));
+					
+					slice.classList.add('active');
+					document.body.classList.add('app-open');
+				}
+			});
+		});
+
+		if (btnVolver) {
+			btnVolver.addEventListener('click', (e) => {
+				e.stopPropagation(); // Evitar que el clic en el botón se traslade y lo vuelva a abrir
+				slices.forEach(s => s.classList.remove('active'));
+				document.body.classList.remove('app-open');
+			});
+		}
+	});
+</script>
+
 <style>
 	.glitch-accordion {
 		height: 100vh;
@@ -49,26 +80,22 @@ import Contacto from '../components/Contacto.astro';
 		overflow: hidden;
 		font-family: 'JetBrains Mono', monospace;
 		position: relative;
-		display: flex; /* Para centrado horizontal */
+		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	.accordion-container {
 		display: flex;
-		width: 71.5vw; /* 5 slices * 14.3% del viewport */
+		width: 71.5vw;
 		height: 100vh;
 		margin: 0 auto;
 		position: relative;
 		z-index: 1;
 		transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 	}
-	/* Regla que escala el bloque entero al 100% khi there is internal hover */
-	.accordion-container:has(.slice:hover) {
-		width: 100vw !important;
-	}
 
 	.slice {
-		flex: 0 0 14.3vw; /* Ancho inicial exacto */
+		flex: 0 0 14.3vw;
 		width: 14.3vw;
 		height: 100%;
 		border-left: 1px solid rgba(255, 0, 85, 0.3);
@@ -79,20 +106,8 @@ import Contacto from '../components/Contacto.astro';
 		cursor: crosshair;
 	}
 	
-	/* Cuando el contenedor está en hover, las cajas no seleccionadas pasan a 12.5vw */
-	.accordion-container:hover .slice {
-		flex: 0 0 12.5vw;
-		width: 12.5vw;
-	}
-
 	.slice:last-child { border-right: 1px solid rgba(255, 0, 85, 0.3); }
 
-	/* La caja bajo el cursor mantiene el 50vw exacto */
-	.slice:hover {
-		flex: 0 0 50vw !important;
-		width: 50vw !important;
-		background: #050505;
-	}
 	.slice-header {
 		position: absolute;
 		top: 50%;
@@ -103,7 +118,7 @@ import Contacto from '../components/Contacto.astro';
 		pointer-events: none;
 		transition: opacity 0.3s;
 	}
-	.slice:hover .slice-header { opacity: 0; }
+	
 	.slice-header h2 {
 		font-size: 3rem;
 		color: rgba(255, 0, 85, 0.5);
@@ -112,19 +127,14 @@ import Contacto from '../components/Contacto.astro';
 	}
 
 	.slice-content {
-		padding: 5rem 4rem 3rem 4rem; /* Padding superior solicitado a 5rem y bottom a 3rem */
+		padding: 5rem 4rem 3rem 4rem;
 		height: 100%;
-		overflow-y: hidden; /* Deshabilitado para evitar saltos en la transición del acordeón */
+		overflow-y: hidden;
 		opacity: 0;
 		transform: translateX(50px);
 		transition: all 0.5s 0.3s ease;
 	}
-	.slice:hover .slice-content {
-		opacity: 1;
-		transform: translateX(0);
-	}
 
-	/* Efecto Ventana Deslizante con Revelado Izquierda -> Derecha */
 	.about-slice .slice-content {
 		opacity: 1 !important;
 		transform: none !important;
@@ -132,14 +142,90 @@ import Contacto from '../components/Contacto.astro';
 		min-width: 50vw;
 		flex-shrink: 0;
 		clip-path: inset(0 100% 0 0);
-		/* Transición de salida rápida y sin delay para sincronizar con el cierre del acordeón */
 		transition: clip-path 0.4s ease-out; 
 	}
 
-	.about-slice:hover .slice-content {
-		clip-path: inset(0 0 0 0);
-		/* Al entrar opcionalmente podés tener un delay si querés, pero para el reveal mejor directo */
-		transition: clip-path 0.5s ease-in-out;
+	/* == INTERACCIÓN ESCRITORIO (Hover Mantenido) == */
+	@media (hover: hover) and (min-width: 901px) {
+		.accordion-container:has(.slice:hover) {
+			width: 100vw !important;
+		}
+		.accordion-container:hover .slice {
+			flex: 0 0 12.5vw;
+			width: 12.5vw;
+		}
+		.slice:hover {
+			flex: 0 0 50vw !important;
+			width: 50vw !important;
+			background: #050505;
+		}
+		.slice:hover .slice-header { opacity: 0; }
+		.slice:hover .slice-content {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		.about-slice:hover .slice-content {
+			clip-path: inset(0 0 0 0);
+			transition: clip-path 0.5s ease-in-out;
+		}
+	}
+
+	/* == INTERACCIÓN MÓVIL CRÍTICA (Touch-First UX) == */
+	@media (max-width: 900px) {
+		.accordion-container { 
+			flex-direction: column; 
+			width: 100vw; 
+			height: 100vh; 
+		}
+		.slice { 
+			flex: 0 0 20vh; 
+			width: 100vw;
+			height: 20vh;
+			border-left: none; 
+			border-top: 1px solid rgba(255, 0, 85, 0.3); 
+			transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		}
+		.slice:last-child {
+			border-right: none;
+		}
+		
+		.slice-header { 
+			transform: translate(-50%, -50%); 
+		}
+		.slice-header h2 {
+			font-size: 2.5rem;
+		}
+		.slice-content {
+			padding: 5.5rem 1.5rem 2rem 1.5rem; /* Ajustadas según plan y espacio para el header */
+		}
+		.about-slice .slice-content {
+			clip-path: none !important;
+			width: 100vw;
+			min-width: 100vw;
+		}
+		
+		/* ESTADO ACTIVO GENERADO POR JAVASCRIPT */
+		.slice.active {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: 1000;
+			background: #050505;
+			border: none;
+			/* Importante: para que el usuario pueda scrollear internamente */
+			overflow-y: auto; 
+			overflow-x: hidden;
+		}
+		.slice.active .slice-header {
+			opacity: 0;
+			pointer-events: none;
+		}
+		.slice.active .slice-content {
+			opacity: 1 !important;
+			transform: translateX(0) !important;
+		}
 	}
 
 	.noise-overlay {
@@ -148,12 +234,5 @@ import Contacto from '../components/Contacto.astro';
 		opacity: 0.05;
 		pointer-events: none;
 		z-index: 1000;
-	}
-
-	@media (max-width: 900px) {
-		.accordion-container { flex-direction: column; }
-		.slice { height: auto; border-left: none; border-top: 1px solid rgba(255, 0, 85, 0.3); }
-		.slice:hover { flex: 10; }
-		.slice-header { transform: translate(-50%, -50%); }
 	}
 </style>
