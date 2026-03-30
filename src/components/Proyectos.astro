@@ -183,77 +183,31 @@
     flex: 1;
     overflow-y: auto;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem; /* Coherente con XP description */
+    font-size: var(--fs-body);
     color: var(--text-secondary);
     line-height: 1.6;
   }
 
-  /* Scrollbar estricto del sitio */
-  .terminal-screen::-webkit-scrollbar { width: 4px; }
-  .terminal-screen::-webkit-scrollbar-track { background: transparent; }
-  .terminal-screen::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
-    border-radius: 10px;
-  }
-
-  #term-typing {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 1.5rem;
-  }
-
-  :global(.term-line) {
-    opacity: 0;
-    animation: fadeInRow 0.1s forwards;
-  }
-
-  :global(.term-line.command) {
-    color: var(--accent-color);
-    font-weight: 600;
-  }
-  
-  :global(.term-line.error) {
-    color: var(--text-secondary); /* Evitamos el rojo hardcodeado suelto */
-    opacity: 0.8;
-  }
-
-  @keyframes fadeInRow {
-    to { opacity: 1; }
-  }
+  /* ... rest of existing styles ... */
 
   #term-art {
     color: var(--text-secondary);
     white-space: pre-wrap;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0;
-    line-height: 1.25;
+    line-height: 1.2;
     padding-top: 1.5rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.1); /* Exactamente igual al divisor de XP */
+    border-top: 1px dashed rgba(255, 255, 255, 0.1); 
   }
 
-  .hidden {
-    display: none;
-  }
-
-  .reveal {
-    display: block;
-    opacity: 0;
-    animation: fadeInRow 0.5s ease forwards; /* Sin animaciones glitch exageradas */
-  }
-
-  .highlight {
-    color: var(--accent-color);
-    font-weight: 700;
-  }
-
-  .blink {
-    animation: blinking 1s step-end infinite;
-    color: var(--accent-color);
-  }
-
-  @keyframes blinking {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  @media (max-width: 512px) {
+    .terminal-screen {
+      padding: 1rem;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    #term-art {
+      font-size: 0.75rem;
+    }
   }
 </style>

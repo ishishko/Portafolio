@@ -388,22 +388,32 @@
 
   .cert-year {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--accent-color);
     font-weight: 600;
-    width: 120px;
+    width: 100px;
   }
 
   .cert-inst {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.6);
-    width: 250px;
+    width: 200px;
   }
 
   .cert-name {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 500;
     color: var(--text-primary);
+  }
+
+  @media (max-width: 512px) {
+    .skills-grid { gap: 1.5rem; }
+    .cat-title { font-size: 0.95rem; }
+    .skill-pill { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
+    .cert-year, .cert-inst { font-size: 0.75rem; width: auto; }
+    .cert-name { font-size: 0.85rem; }
+    .cert-table th { font-size: 0.75rem; padding: 0.4rem 1rem; }
+    .cert-table td { padding: 0.3rem 1rem; }
   }
 
   .highlight-text {

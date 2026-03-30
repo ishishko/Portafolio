@@ -205,7 +205,7 @@
 
   .xp-role {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--text-primary);
     margin: 0;
     letter-spacing: 0.02em;
@@ -213,7 +213,7 @@
 
   .xp-company {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--accent-color);
     font-weight: 600;
     text-transform: uppercase;
@@ -222,11 +222,11 @@
 
   .xp-date {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 0.35rem 0.75rem;
+    padding: 0.3rem 0.6rem;
     border-radius: 4px;
     display: inline-block;
   }
@@ -234,30 +234,23 @@
   .xp-body {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 
   .xp-description {
-    font-size: 1.05rem; /* Ajustado para legibilidad en párrafo largo */
+    font-size: var(--fs-body);
     color: rgba(255, 255, 255, 0.6);
     line-height: 1.6;
     margin: 0;
   }
 
-  .tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-    background: rgba(255, 0, 85, 0.1);
-    border: 1px solid rgba(255, 0, 85, 0.3);
-    color: var(--accent-color);
-    border-radius: 2px;
+  @media (max-width: 512px) {
+    .xp-card { padding: 1rem; }
+    .xp-role { font-size: 1.1rem; }
+    .xp-company { font-size: 0.8rem; }
+    .xp-date { font-size: 0.7rem; }
+    .xp-description { font-size: 0.8rem; line-height: 1.4; }
+    .tag { font-size: 0.65rem; padding: 0.15rem 0.4rem; }
   }
 
   @media (max-width: 900px) {
