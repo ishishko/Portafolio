@@ -126,6 +126,24 @@ import Footer from '../components/Footer.astro';
 		transform: translateX(0);
 	}
 
+	/* Efecto Ventana Deslizante con Revelado Izquierda -> Derecha */
+	.about-slice .slice-content {
+		opacity: 1 !important;
+		transform: none !important;
+		width: 50vw;
+		min-width: 50vw;
+		flex-shrink: 0;
+		clip-path: inset(0 100% 0 0);
+		/* Transición de salida rápida y sin delay para sincronizar con el cierre del acordeón */
+		transition: clip-path 0.4s ease-out; 
+	}
+
+	.about-slice:hover .slice-content {
+		clip-path: inset(0 0 0 0);
+		/* Al entrar opcionalmente podés tener un delay si querés, pero para el reveal mejor directo */
+		transition: clip-path 0.5s ease-in-out;
+	}
+
 	.noise-overlay {
 		position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
