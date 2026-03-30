@@ -1,84 +1,259 @@
 ---
 ---
 <div class="proyectos-wrapper" id="proyectos">
-  <h2 class="section-title">Proyectos destacados</h2>
-  <div class="proyectos-grid">
-    <div class="proyecto-card">
-      <div class="proyecto-info">
-        <p class="p-main">Juego Ahorcado</p>
-        <p class="p-sub">HTML, CSS, JS - Challenge ALURA</p>
-        <div class="proyecto-links">
-          <a href="https://github.com/ishishko/Challenge-ONE-Ahorcado" target="_blank">Repo</a>
-          <a href="https://ishishko.github.io/Challenge-ONE-Ahorcado/" target="_blank">Web</a>
-        </div>
-      </div>
-      <img src="/assets/img/ahorcado.jpg" alt="ahorcado" class="proyecto-preview" />
-    </div>
+  <div class="proyectos-container">
+    <h2 class="section-title">WORK</h2>
 
-    <div class="proyecto-card">
-      <img src="/assets/img/encriptador1.jpg" alt="encriptador" class="proyecto-preview" />
-      <div class="proyecto-info">
-        <p class="p-main">Encriptador Decodificador</p>
-        <p class="p-sub">JS Avanzado - Challenge ALURA</p>
-        <div class="proyecto-links">
-          <a href="https://github.com/ishishko/Challenge-ONE-Encriptador" target="_blank">Repo</a>
-          <a href="https://ishishko.github.io/Challenge-ONE-Encriptador/" target="_blank">Web</a>
+    <div class="terminal-box">
+      <!-- Decoración de la barra de título de la terminal -->
+      <div class="terminal-bar">
+        <div class="circles">
+          <span></span><span></span><span></span>
         </div>
+        <div class="terminal-title">sys.terminal - root@portafolio:/work</div>
+      </div>
+      
+      <!-- Pantalla donde ocurre la simulación -->
+      <div class="terminal-screen" id="term-screen">
+        <div id="term-typing"></div>
+        <pre id="term-art" class="hidden">
+       .---.
+      /_____\\
+      ( •_• )
+      /|   |\\
+     / |___| \\
+    d  |   |  b
+   ====|===|====
+   
+ <span class="highlight">>> ESTADO: UNDER CONSTRUCTION</span>
+ <span class="blink">_</span>
+        </pre>
       </div>
     </div>
   </div>
 </div>
 
+<script>
+  // Lógica de simulación de terminal
+  const linesToType = [
+    "[root@system]~# init --module WORK",
+    "Initializing workspace...",
+    "Securing handshake protocol... [OK]",
+    "Fetching project repositories... [WAIT]",
+    "ERR: repositories currently locked for maintenance (code 404).",
+    "Loading fallback construction protocol...",
+    "Rendering placeholder character..."
+  ];
+
+  const typingContainer = document.getElementById('term-typing');
+  const artContainer = document.getElementById('term-art');
+
+  let currentLine = 0;
+
+  function typeLine(text, element, speed) {
+    return new Promise(resolve => {
+      let i = 0;
+      const lineDiv = document.createElement('div');
+      lineDiv.className = "term-line";
+      if (text.startsWith("[root")) {
+        lineDiv.classList.add('command');
+      } else if (text.startsWith("ERR")) {
+        lineDiv.classList.add('error');
+      }
+      element.appendChild(lineDiv);
+
+      function typeChar() {
+        if (i < text.length) {
+          lineDiv.textContent += text.charAt(i);
+          i++;
+          // Variar levemente la velocidad para que parezca más real
+          setTimeout(typeChar, speed + Math.random() * 20);
+        } else {
+          setTimeout(resolve, 300); // Pausa al terminar la línea
+        }
+      }
+      typeChar();
+    });
+  }
+
+  async function runTerminalSimulation() {
+    // Si ya se corrió, no lo repetimos
+    if (typingContainer.innerHTML !== "") return;
+
+    for (const line of linesToType) {
+      await typeLine(line, typingContainer, 30);
+    }
+    
+    // Una vez tipeadas todas las líneas, esperamos un segundo y mostramos el arte
+    setTimeout(() => {
+      artContainer.classList.remove('hidden');
+      artContainer.classList.add('reveal');
+    }, 500);
+  }
+
+  // Ejecutamos la animación de la terminal de inmediato, o cuando la sección sea visible.
+  // Como están usando el glitch-accordion, podemos usar IntersectionObserver para lanzarlo 
+  // solo cuando el usuario despliegue la pestaña WORK.
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Definir que está interactuando si la pestaña ocupa más del 30% del viewport
+      // O simplemente si el elemento contenedor es visible
+      if (entry.isIntersecting) {
+        // Un pequeño timeout para esperar a que cambie el width del slice
+        setTimeout(runTerminalSimulation, 400);
+        observer.disconnect(); // Solo se reproduce una vez
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const terminalElement = document.querySelector('.terminal-box');
+  if (terminalElement) {
+    observer.observe(terminalElement);
+  }
+</script>
+
 <style>
   .proyectos-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .section-title {
-    font-size: var(--fs-h3);
-    margin: 0;
-  }
-  .proyectos-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .proyecto-card {
-    display: grid;
-    grid-template-columns: 1fr 120px;
-    gap: 1rem;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 1rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--border-color);
-  }
-  .proyecto-preview {
     width: 100%;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 0.5rem;
+    color: var(--text-primary);
   }
-  .p-main { font-weight: 700; font-size: 1rem; margin: 0; color: var(--text-primary); }
-  .p-sub { font-size: 0.8rem; color: var(--text-secondary); margin: 0 0 1rem 0; }
-  
-  .proyecto-links {
+  .proyectos-container {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
   }
-  .proyecto-links a {
+
+  .section-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    margin-bottom: 2.5rem;
+  }
+
+  /* --- TERMINAL WINDOW (macOS Style + HUD Coherence) --- */
+  .terminal-box {
+    background: rgba(10, 10, 10, 0.5); /* Coherencia exacta con cert-table y xp-card */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px; /* Un milímetro más redondo para simular ventana SO */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .terminal-bar {
+    background: rgba(255, 255, 255, 0.03); /* Barra ultra sutil */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea clara, no dashed */
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .circles {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    left: 1rem;
+  }
+
+  .circles span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Colores exactos clásica ventana OS */
+  .circles span:nth-child(1) { background: #FF5F56; } /* Close */
+  .circles span:nth-child(2) { background: #FFBD2E; } /* Minimize */
+  .circles span:nth-child(3) { background: #27C93F; } /* Maximize */
+
+  .terminal-title {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid var(--accent-color);
-    border-radius: 2rem;
-    transition: all 0.2s ease;
+    color: var(--text-secondary); /* Coherencia con vars globales */
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
   }
-  .proyecto-links a:hover {
+
+  .terminal-screen {
+    padding: 1.5rem 2rem;
+    flex: 1;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem; /* Coherente con XP description */
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Scrollbar estricto del sitio */
+  .terminal-screen::-webkit-scrollbar { width: 4px; }
+  .terminal-screen::-webkit-scrollbar-track { background: transparent; }
+  .terminal-screen::-webkit-scrollbar-thumb {
     background: var(--accent-color);
-    color: var(--bg-color);
+    border-radius: 10px;
+  }
+
+  #term-typing {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.term-line) {
+    opacity: 0;
+    animation: fadeInRow 0.1s forwards;
+  }
+
+  :global(.term-line.command) {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+  
+  :global(.term-line.error) {
+    color: var(--text-secondary); /* Evitamos el rojo hardcodeado suelto */
+    opacity: 0.8;
+  }
+
+  @keyframes fadeInRow {
+    to { opacity: 1; }
+  }
+
+  #term-art {
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.25;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1); /* Exactamente igual al divisor de XP */
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .reveal {
+    display: block;
+    opacity: 0;
+    animation: fadeInRow 0.5s ease forwards; /* Sin animaciones glitch exageradas */
+  }
+
+  .highlight {
+    color: var(--accent-color);
+    font-weight: 700;
+  }
+
+  .blink {
+    animation: blinking 1s step-end infinite;
+    color: var(--accent-color);
+  }
+
+  @keyframes blinking {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 </style>

@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ feature/astro-migration, main ]
+    branches: [ vertical-glitch-accordion, feature/astro-migration, main ]
   workflow_dispatch:
 
 permissions:
