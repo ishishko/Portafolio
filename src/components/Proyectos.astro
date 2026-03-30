@@ -1,7 +1,7 @@
 ---
 ---
 <div class="proyectos-wrapper" id="proyectos">
-  <div class="proyectos-container">
+  <div class="proyectos-container mobile-inner-scroll">
     <h2 class="section-title">WORK</h2>
 
     <div class="terminal-box">
@@ -208,6 +208,18 @@
     }
     #term-art {
       font-size: 0.75rem;
+    }
+  }
+  @media (max-width: 900px) {
+    .mobile-inner-scroll {
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    .mobile-inner-scroll::-webkit-scrollbar { width: 4px; }
+    .mobile-inner-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
     }
   }
 </style>
