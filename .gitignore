@@ -23,5 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Claude Code local settings
+.claude/
 
 Portafolios_Full_Stack.md
