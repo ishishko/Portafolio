@@ -12,19 +12,19 @@
       <div class="contacto--div--formulario">
         <form class="contacto--formulario" id="form" action="https://formspree.io/f/maykagoz" method="POST">
           <div class="contacto--div--input">
-            <input class="input--nombre" type="text" name="nombre" required />
+            <input class="input--nombre" type="text" name="nombre" autocomplete="off" required />
             <label class="lbl--nombre">
               <span class="text--nombre">Nombre</span>
             </label>
           </div>
           <div class="contacto--div--input">
-            <input class="input--email" type="email" name="email" required />
+            <input class="input--email" type="email" name="email" autocomplete="off" required />
             <label class="lbl--email">
               <span class="text--email">Email</span>
             </label>
           </div>
           <div class="contacto--div--input">
-            <input class="input--asunto" type="text" name="asunto" required />
+            <input class="input--asunto" type="text" name="asunto" autocomplete="off" required />
             <label class="lbl--asunto">
               <span class="text--asunto">Asunto</span>
             </label>
@@ -48,15 +48,6 @@
 <script>
   const $form = document.querySelector(".contacto--formulario") as HTMLFormElement;
   $form?.addEventListener("submit", enviar);
-
-  // Blur focus al salir del slice para evitar autocompletado flotante
-  const $slice = $form?.closest('.slice');
-  $slice?.addEventListener('mouseleave', () => {
-    const focused = document.activeElement;
-    if ($slice.contains(focused)) {
-      (focused as HTMLElement).blur();
-    }
-  });
 
   async function enviar(this: HTMLFormElement, e: SubmitEvent) {
     e.preventDefault();
