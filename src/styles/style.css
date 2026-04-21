@@ -44,7 +44,7 @@ h2 {
 }
 
 /* Responsividad: Proporcionalidad de Fuentes */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   :root {
     --fs-h1: 3.5rem;
     --fs-h2: 2.5rem;

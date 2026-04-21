@@ -49,7 +49,7 @@ import Contacto from '../components/Contacto.astro';
 		slices.forEach(slice => {
 			slice.addEventListener('click', (e) => {
 				// Actuar solo si estamos en un tamaño de pantalla de celular
-				if (window.innerWidth <= 900) {
+				if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 					// Si el panel ya está abierto, no hacemos nada extra para que dejen usar los lins de adentro
 					if (slice.classList.contains('active')) return;
 
@@ -146,7 +146,7 @@ import Contacto from '../components/Contacto.astro';
 	}
 
 	/* == INTERACCIÓN ESCRITORIO (Hover Mantenido) == */
-	@media (hover: hover) and (min-width: 901px) {
+	@media (hover: hover) and (pointer: fine) {
 		.accordion-container:has(.slice:hover) {
 			width: 100vw !important;
 		}
@@ -170,26 +170,54 @@ import Contacto from '../components/Contacto.astro';
 		}
 	}
 
-	/* == INTERACCIÓN MÓVIL (20VW Horizontal Accordion) == */
-	@media (max-width: 900px) {
-		.accordion-container { 
-			flex-direction: row; /* Mantenemos horizontal */
-			width: 100vw; 
-			height: 100vh; 
+	/* == ESTADO ACTIVO (Full-Screen Overlay — touch devices de cualquier ancho) == */
+	.slice.active {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 1000;
+		background: #000;
+		border: none;
+		overflow-y: hidden;
+		overflow-x: hidden;
+		animation: overlayEntry 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+	}
+
+	.slice.active .slice-header {
+		opacity: 0;
+	}
+
+	.slice.active .slice-content {
+		opacity: 1 !important;
+		transform: translateX(0) !important;
+		width: 100vw !important;
+		min-width: 100vw !important;
+		clip-path: none !important;
+		padding-top: 6rem;
+	}
+
+	/* == LAYOUT MÓVIL/TABLET (20VW Horizontal Accordion) == */
+	@media (max-width: 1024px) {
+		.accordion-container {
+			flex-direction: row;
+			width: 100vw;
+			height: 100vh;
 		}
-		.slice { 
+		.slice {
 			flex: 0 0 20vw; /* 5 slices * 20vw = 100vw */
 			width: 20vw;
 			height: 100vh;
 			border-left: 1px solid rgba(255, 0, 85, 0.3);
-			border-top: none; 
+			border-top: none;
 		}
 		.slice:last-child {
 			border-right: 1px solid rgba(255, 0, 85, 0.3);
 		}
-		
-		.slice-header { 
-			transform: translate(-50%, -50%) rotate(-90deg); /* Mantenemos rotación original */
+
+		.slice-header {
+			transform: translate(-50%, -50%) rotate(-90deg);
 		}
 		.slice-header h2 {
 			font-size: 2.2rem;
@@ -200,35 +228,7 @@ import Contacto from '../components/Contacto.astro';
 			}
 		}
 		.slice-content {
-			padding: 5rem 1.5rem 2rem 1.5rem; 
-		}
-		
-		/* ESTADO ACTIVO (Full-Screen Overlay) */
-		.slice.active {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			z-index: 1000;
-			background: #000;
-			border: none;
-			overflow-y: hidden; /* Permitimos que el scroll interno del componente mande */
-			overflow-x: hidden;
-			animation: overlayEntry 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-		}
-
-		.slice.active .slice-header {
-			opacity: 0;
-		}
-
-		.slice.active .slice-content {
-			opacity: 1 !important;
-			transform: translateX(0) !important;
-			width: 100vw !important;
-			min-width: 100vw !important;
-			clip-path: none !important;
-			padding-top: 6rem; /* Mas espacio para el Header y el boton volver */
+			padding: 5rem 1.5rem 2rem 1.5rem;
 		}
 	}
 
