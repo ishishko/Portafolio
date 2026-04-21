@@ -39,25 +39,35 @@
     cursor: pointer;
     padding: 0;
     margin-right: 0.75rem;
-    display: none; /* Oculto por defecto */
+    display: flex;
     align-items: center;
     gap: 2px;
     font-family: 'JetBrains Mono', monospace;
     font-weight: bold;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    /* Estado inicial: oculto con animación lista */
+    opacity: 0;
+    transform: translateX(-14px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, filter 0.2s ease;
   }
   .hud-bracket {
     font-size: 1.2rem;
     opacity: 0.8;
   }
   .back-btn:hover {
-    transform: translateX(-3px);
     filter: drop-shadow(0 0 8px var(--accent-color));
   }
-  
-  /* Revelar el botón solo cuando hay una sección activa */
-  :global(body.app-open) .back-btn {
-    display: flex;
+
+  /* Solo en mobile/tablet: mostrar back-btn con animación cuando hay sección activa */
+  @media (max-width: 1024px) {
+    :global(body.app-open) .back-btn {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    :global(body.app-open) .header-content {
+      cursor: pointer;
+    }
   }
 
   .logo-icon {
@@ -81,4 +91,5 @@
   @media (max-width: 1024px) {
     .main-header { padding: 1.5rem; }
   }
+
 </style>

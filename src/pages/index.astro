@@ -62,11 +62,23 @@ import Contacto from '../components/Contacto.astro';
 			});
 		});
 
-		if (btnVolver) {
-			btnVolver.addEventListener('click', (e) => {
-				e.stopPropagation(); // Evitar que el clic en el botón se traslade y lo vuelva a abrir
-				slices.forEach(s => s.classList.remove('active'));
+		function volver() {
+			const activeSlice = document.querySelector('.slice.active');
+			if (!activeSlice) return;
+			activeSlice.classList.add('leaving');
+			activeSlice.addEventListener('animationend', () => {
+				activeSlice.classList.remove('active', 'leaving');
 				document.body.classList.remove('app-open');
+			}, { once: true });
+		}
+
+		// En mobile/tablet (≤1024px): header-content actúa como botón de volver
+		// En desktop el accordion es hover-based, no necesita acción de volver
+		if (window.matchMedia('(max-width: 1024px)').matches) {
+			const headerContent = document.querySelector('.header-content');
+			headerContent?.addEventListener('click', () => {
+				if (!document.body.classList.contains('app-open')) return;
+				volver();
 			});
 		}
 	});
@@ -170,7 +182,7 @@ import Contacto from '../components/Contacto.astro';
 		}
 	}
 
-	/* == ESTADO ACTIVO (Full-Screen Overlay — touch devices de cualquier ancho) == */
+	/* == ESTADO ACTIVO (Full-Screen Overlay — touch devices) == */
 	.slice.active {
 		position: fixed;
 		top: 0;
@@ -182,7 +194,12 @@ import Contacto from '../components/Contacto.astro';
 		border: none;
 		overflow-y: hidden;
 		overflow-x: hidden;
-		animation: overlayEntry 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+		animation: overlayEntry 0.35s ease-out forwards;
+	}
+
+	.slice.leaving {
+		animation: overlayExit 0.25s ease-in forwards;
+		pointer-events: none;
 	}
 
 	.slice.active .slice-header {
@@ -190,12 +207,11 @@ import Contacto from '../components/Contacto.astro';
 	}
 
 	.slice.active .slice-content {
-		opacity: 1 !important;
-		transform: translateX(0) !important;
 		width: 100vw !important;
 		min-width: 100vw !important;
 		clip-path: none !important;
 		padding-top: 6rem;
+		animation: contentReveal 0.35s 0.15s ease-out both;
 	}
 
 	/* == LAYOUT MÓVIL/TABLET (20VW Horizontal Accordion) == */
@@ -233,8 +249,18 @@ import Contacto from '../components/Contacto.astro';
 	}
 
 	@keyframes overlayEntry {
-		from { opacity: 0; transform: scale(1.05); }
-		to { opacity: 1; transform: scale(1); }
+		from { opacity: 0; transform: translateY(40px); }
+		to   { opacity: 1; transform: translateY(0); }
+	}
+
+	@keyframes overlayExit {
+		from { opacity: 1; transform: translateY(0); }
+		to   { opacity: 0; transform: translateY(20px); }
+	}
+
+	@keyframes contentReveal {
+		from { opacity: 0; transform: translateY(12px); }
+		to   { opacity: 1; transform: translateY(0); }
 	}
 
 	.noise-overlay {
