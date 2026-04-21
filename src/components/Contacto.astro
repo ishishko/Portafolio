@@ -49,6 +49,15 @@
   const $form = document.querySelector(".contacto--formulario") as HTMLFormElement;
   $form?.addEventListener("submit", enviar);
 
+  // Blur focus al salir del slice para evitar autocompletado flotante
+  const $slice = $form?.closest('.slice');
+  $slice?.addEventListener('mouseleave', () => {
+    const focused = document.activeElement;
+    if ($slice.contains(focused)) {
+      (focused as HTMLElement).blur();
+    }
+  });
+
   async function enviar(this: HTMLFormElement, e: SubmitEvent) {
     e.preventDefault();
     const form = new FormData(this);
