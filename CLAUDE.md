@@ -23,16 +23,14 @@ Portafolio personal de Ignacio Shishko construido con **Astro v6** (generador de
 - Cada sección del portafolio (`SobreMi`, `Skills`, `Formacion`, `Experiencia`, `Proyectos`, `Contacto`) es un componente `.astro` independiente
 
 **JavaScript:**
-- `src/scripts/app.js` — orquestación principal de la app
-- `src/scripts/cargaPagina.js` — lógica del spinner y fade-in al cargar la página
-- `src/scripts/navFixed.js` — header fijo que se activa tras scroll > 100px
-- `src/scripts/contacto.js` — envío del formulario de contacto vía fetch a FormSpree
+- Toda la interactividad es vanilla JS inline en los componentes `.astro` (scoped scripts)
+- Sin frameworks runtime — cero dependencias JS en cliente
 
 **Estilos:**
-- CSS global e imports en `src/styles/style.css` (tipografía, grid, utilidades)
-- Estilos por sección en `src/styles/main/section*.css`
-- Convención de nombres: kebab-case con doble guion para separar componente de elemento (e.g., `header--nav`, `proyecto--div`)
-- Breakpoints responsive: 412px (móvil), 820px (tablet), 1680px (desktop)
+- CSS global en `src/styles/style.css` (variables, tipografía fluida, utilidades)
+- Estilos scoped por componente en cada `.astro`
+- Convención de nombres: kebab-case con doble guion (e.g., `contacto--formulario`, `header--nav`)
+- Breakpoints responsive: 512px (móvil), 1024px (tablet), desktop (hover-aware)
 
 **Assets estáticos:** imágenes y CV PDF en `public/assets/img/`
 

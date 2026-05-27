@@ -1,43 +1,36 @@
-# Astro Starter Kit: Minimal
+# Portafolio — Ignacio Shishko
 
-```sh
-npm create astro@latest -- --template minimal
+Portafolio profesional con estética **Cyberpunk Glitch**. Desarrollador Full Stack & Arquitecto de IA.
+
+## Stack
+
+- **Framework:** [Astro v6](https://astro.build) (SSG)
+- **Lógica:** Vanilla JavaScript ES6+
+- **Estilos:** Pure CSS (CSS Custom Properties + Scoped Styles)
+- **Deploy:** GitHub Pages via GitHub Actions
+
+## Secciones
+
+| Slice | Componente | Contenido |
+|-------|-----------|-----------|
+| ABOUT | `SobreMi.astro` | Hero, perfil, tags, enlaces |
+| WORK | `Proyectos.astro` | Terminal animada con proyectos |
+| TECH | `Skills.astro` | Skills técnicas + certificaciones |
+| XP | `Experiencia.astro` | Timeline laboral |
+| LINK | `Contacto.astro` | Formulario vía FormSpree |
+
+## Comandos
+
+```bash
+npm run dev       # Servidor local → localhost:4321
+npm run build     # Build producción → ./dist/
+npm run preview   # Preview del build local
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Requiere Node.js `>=22.12.0`.
 
-## 🚀 Project Structure
+## Arquitectura
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **SPA vertical accordion**: 5 slices que se expanden en desktop (hover) o abren overlay en mobile (touch)
+- **Sin dependencias runtime**: solo Astro en build, cero JS de frameworks en cliente
+- **Formulario**: FormSpree como backend serverless
